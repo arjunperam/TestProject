@@ -1,0 +1,51 @@
+
+<div class="container" align="center">
+    {{diagnostic}}
+  <form  (ngSubmit)="OnSubmitCustomer()">
+  <br>  
+  <h2>Cascading Dropdownlist </h2>  
+  <br>
+  <div class="form-group" class="row">
+   <label >CoustmerName:</label>
+       <input type="text" class="form-control"  required  name="name"  [(ngModel)]="customer.CustomerName">  
+  </div> 
+  <div class="form-group" class="row">
+    <label >CoustmerPhoneNumber:</label>
+    <input type="number" class="form-control"  required  name="phone" [(ngModel)]="customer.CustomerPhonenum">  
+  </div> 
+  <div class="form-group" class="row">
+      <label >CoustmerEmail:</label>
+      <input type="email" class="form-control"  required  name="email" [(ngModel)]="customer.CoustmerEmail">  
+   </div>
+    <div class="form-group" class="row">
+      <label>Country Name:</label>     
+       <select class="form-control"  name="Country"  [(ngModel)]="customer.CustomerCountry"  required
+              (change)="getStateByid($event.target.value)">  
+      <option value="undefined">Select Country Name</option>
+      <option *ngFor="let c of countries" [value]="c.CountryId">
+        {{c.CountryName}}
+      </option> 
+       </select>  
+    </div>  <br>
+    <div class="form-group" class="row">    
+        <label>State Name:</label>  
+         <select name="State"  class="form-control" [(ngModel)]="customer.CustomerState"     required (change)="getCityByid($event.target.value)" >  
+        <option value="undefined">Select State Name</option>  
+        <option *ngFor="let s of states" [value]="s.StateId">
+        {{s.StateName}}
+        </option>
+       </select>  
+    </div>  <br>
+    <div class="form-group" class="row">    
+          <label>City Name:</label>    
+      <select name="City"  class="form-control"   required    [(ngModel)]="customer.CustomerCity">  
+      <option value="undefined">Select City Name</option>
+      <option *ngFor="let city of cities" [value]="city.CityId">
+        {{city.CityName}}
+      </option>    
+      </select>  
+    </div>
+<button type="submit" class="btn btn-success" >Save</button>  
+</form>
+
+</div>    
