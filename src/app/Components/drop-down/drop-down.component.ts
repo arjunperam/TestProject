@@ -35,6 +35,7 @@ getCityByid(sid:string):any{
 }
 
 OnSubmitCustomer(form:NgForm):any{
+  console.log(this.customer);
    this.service.insertingCustomer(this.customer).subscribe(res=>{this.customerDetails=res},
     this.errorCallBack)
 }
